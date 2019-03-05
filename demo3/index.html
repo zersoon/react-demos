@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo3 React Component</title>
+    <script src="../libs/react.development.js"></script>
+    <script src="../libs/react-dom.development.js"></script>
+    <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="demo3"></div>
+    <script type="text/babel">
+      class HelloJoy extends React.Component {
+          render() {
+              return <h1>{this.props.name}</h1>
+          }
+      }
+
+      ReactDOM.render(
+          <HelloJoy name="JoyRong" />,
+          document.getElementById("demo3")
+      )
+    </script>
+</body>
+
+</html>
