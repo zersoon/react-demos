@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login Form</title>
+  <script src="../libs/react.development.js"></script>
+  <script src="../libs/react-dom.development.js"></script>
+  <script src="../libs/babel.min.js"></script>
+  <script src="../libs/prop-types.js"></script>
+</head>
+
+<body>
+  Login Form
+  <div id="example"></div>
+  <script type="text/babel">
+    // 需求：自定义包含表单的组件
+    // 1. 界面如下所示
+    // 2. 输入用户名密码后，点击登陆提示输入信息
+    // 3. 不提交表单
+    class LoginForm extends React.Component {
+
+        constructor(props) {
+            super(props)
+            this.state = {
+                pwd: ""
+            }
+            this.handleSubmit = this.handleSubmit.bind(this)
+            this.handleChange = this.handleChange.bind(this)
+        }
+
+        handleSubmit(event) {
+            const name = this.nameInput.value
+            const {pwd} = this.state
+            alert(`准备提交的用户名为${name}, 密码为${pwd}`)
+            // 阻止事件的默认行为(提交)
+            event.preventDefault()
+        }
+
+        handleChange(event) {
+            // 读取输入的值 
+            const pwd = event.target.value
+            // 更新pwd的值 
+            this.setState({pwd})
+        }
+        
+        render() {
+            return (
+                <form action="/index.html" onSubmit={this.handleSubmit}>
+                    用户名: <input type="text" ref={input => this.nameInput = input}/>
+                    密码: <input type="password" value={this.state.pwd} onChange={this.handleChange}/>    
+                    <input type="submit" value="登陆"/>
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(<LoginForm />, document.getElementById('example'))
+  </script>
+</body>
+
+</html>
